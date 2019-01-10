@@ -5,8 +5,9 @@ use Test::Most tests => 1;
 use Modern::Perl;
 
 use IO::Async::Loop;
-use IO::Async::Process;
 use IO::Async::Stream;
+
+use Renard::API::Festival::Server;
 
 use Net::EmptyPort qw(empty_port);
 
@@ -39,8 +40,8 @@ subtest "Run festival" => sub {
 	my $client_done = $loop->new_future;
 
 	$loop->add(
-		my $process = IO::Async::Process->new(
-			command => [ qw(festival --server), "(set! server_port $port)" ],
+		my $process = Renard::API::Festival::Server->new(
+			port => $port,
 			on_finish => sub {
 				$loop->stop;
 			},
