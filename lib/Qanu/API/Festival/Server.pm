@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Festival::Server;
+package Qanu::API::Festival::Server;
 # ABSTRACT: An IO::Async process
 
 use base qw( IO::Async::Process );
